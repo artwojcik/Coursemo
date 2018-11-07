@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a359feffa99049b4a55f24888abbdfa1" Name="Diagram1">
+        <EntityTypeShape EntityType="CoursemoModel.Class" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursemoModel.ClassType" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursemoModel.Department" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursemoModel.Semester" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursemoModel.StudentClass" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursemoModel.Student" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursemoModel.StudentWaitList" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="CoursemoModel.FK__Classes__CTID__61516785" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursemoModel.FK__Classes__DID__5F691F13" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursemoModel.FK__Classes__Semeste__605D434C" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursemoModel.FK__StudentClas__CID__6521F869" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursemoModel.FK__StudentWait__CID__68F2894D" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursemoModel.FK__StudentCla__STID__642DD430" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursemoModel.FK__StudentWai__STID__67FE6514" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

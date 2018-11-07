@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CoursemoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Classes">
+    <Key>
+      <PropertyRef Name="CID" />
+    </Key>
+    <Property Name="CID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DID" Type="int" Nullable="false" />
+    <Property Name="ClassNum" Type="int" Nullable="false" />
+    <Property Name="Semester" Type="int" Nullable="false" />
+    <Property Name="Years" Type="int" Nullable="false" />
+    <Property Name="CRN" Type="int" Nullable="false" />
+    <Property Name="CTID" Type="int" Nullable="false" />
+    <Property Name="WeekDays" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Times" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Capcity" Type="int" Nullable="false" />
+    <Property Name="CurrentTotal" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClassTypes">
+    <Key>
+      <PropertyRef Name="CTID" />
+    </Key>
+    <Property Name="CTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClassType" Type="nvarchar" MaxLength="64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Departments">
+    <Key>
+      <PropertyRef Name="DID" />
+    </Key>
+    <Property Name="DID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Department" Type="nvarchar" MaxLength="16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Semesters">
+    <Key>
+      <PropertyRef Name="SMID" />
+    </Key>
+    <Property Name="SMID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Semester" Type="nvarchar" MaxLength="16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudentClasses">
+    <Key>
+      <PropertyRef Name="SCID" />
+    </Key>
+    <Property Name="SCID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="STID" Type="int" Nullable="false" />
+    <Property Name="CID" Type="int" Nullable="false" />
+    <Property Name="YEARS" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Students">
+    <Key>
+      <PropertyRef Name="STID" />
+    </Key>
+    <Property Name="STID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="NetID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudentWaitList">
+    <Key>
+      <PropertyRef Name="SCID" />
+    </Key>
+    <Property Name="SCID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="STID" Type="int" Nullable="false" />
+    <Property Name="CID" Type="int" Nullable="false" />
+    <Property Name="YEARS" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Classes__CTID__61516785">
+    <End Role="ClassTypes" Type="Self.ClassTypes" Multiplicity="1" />
+    <End Role="Classes" Type="Self.Classes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClassTypes">
+        <PropertyRef Name="CTID" />
+      </Principal>
+      <Dependent Role="Classes">
+        <PropertyRef Name="CTID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Classes__DID__5F691F13">
+    <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
+    <End Role="Classes" Type="Self.Classes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departments">
+        <PropertyRef Name="DID" />
+      </Principal>
+      <Dependent Role="Classes">
+        <PropertyRef Name="DID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Classes__Semeste__605D434C">
+    <End Role="Semesters" Type="Self.Semesters" Multiplicity="1" />
+    <End Role="Classes" Type="Self.Classes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Semesters">
+        <PropertyRef Name="SMID" />
+      </Principal>
+      <Dependent Role="Classes">
+        <PropertyRef Name="Semester" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentCla__STID__642DD430">
+    <End Role="Students" Type="Self.Students" Multiplicity="1" />
+    <End Role="StudentClasses" Type="Self.StudentClasses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="STID" />
+      </Principal>
+      <Dependent Role="StudentClasses">
+        <PropertyRef Name="STID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentClas__CID__6521F869">
+    <End Role="Classes" Type="Self.Classes" Multiplicity="1" />
+    <End Role="StudentClasses" Type="Self.StudentClasses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Classes">
+        <PropertyRef Name="CID" />
+      </Principal>
+      <Dependent Role="StudentClasses">
+        <PropertyRef Name="CID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentWai__STID__67FE6514">
+    <End Role="Students" Type="Self.Students" Multiplicity="1" />
+    <End Role="StudentWaitList" Type="Self.StudentWaitList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="STID" />
+      </Principal>
+      <Dependent Role="StudentWaitList">
+        <PropertyRef Name="STID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentWait__CID__68F2894D">
+    <End Role="Classes" Type="Self.Classes" Multiplicity="1" />
+    <End Role="StudentWaitList" Type="Self.StudentWaitList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Classes">
+        <PropertyRef Name="CID" />
+      </Principal>
+      <Dependent Role="StudentWaitList">
+        <PropertyRef Name="CID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CoursemoModelStoreContainer">
+    <EntitySet Name="Classes" EntityType="Self.Classes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClassTypes" EntityType="Self.ClassTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Semesters" EntityType="Self.Semesters" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentClasses" EntityType="Self.StudentClasses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentWaitList" EntityType="Self.StudentWaitList" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Classes__CTID__61516785" Association="Self.FK__Classes__CTID__61516785">
+      <End Role="ClassTypes" EntitySet="ClassTypes" />
+      <End Role="Classes" EntitySet="Classes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Classes__DID__5F691F13" Association="Self.FK__Classes__DID__5F691F13">
+      <End Role="Departments" EntitySet="Departments" />
+      <End Role="Classes" EntitySet="Classes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Classes__Semeste__605D434C" Association="Self.FK__Classes__Semeste__605D434C">
+      <End Role="Semesters" EntitySet="Semesters" />
+      <End Role="Classes" EntitySet="Classes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentCla__STID__642DD430" Association="Self.FK__StudentCla__STID__642DD430">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="StudentClasses" EntitySet="StudentClasses" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentClas__CID__6521F869" Association="Self.FK__StudentClas__CID__6521F869">
+      <End Role="Classes" EntitySet="Classes" />
+      <End Role="StudentClasses" EntitySet="StudentClasses" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentWai__STID__67FE6514" Association="Self.FK__StudentWai__STID__67FE6514">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="StudentWaitList" EntitySet="StudentWaitList" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentWait__CID__68F2894D" Association="Self.FK__StudentWait__CID__68F2894D">
+      <End Role="Classes" EntitySet="Classes" />
+      <End Role="StudentWaitList" EntitySet="StudentWaitList" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

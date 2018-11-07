@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CoursemoModelStoreContainer" CdmEntityContainer="CoursemoEntities">
+    <EntitySetMapping Name="Classes">
+      <EntityTypeMapping TypeName="CoursemoModel.Class">
+        <MappingFragment StoreEntitySet="Classes">
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="DID" ColumnName="DID" />
+          <ScalarProperty Name="ClassNum" ColumnName="ClassNum" />
+          <ScalarProperty Name="Semester" ColumnName="Semester" />
+          <ScalarProperty Name="Years" ColumnName="Years" />
+          <ScalarProperty Name="CRN" ColumnName="CRN" />
+          <ScalarProperty Name="CTID" ColumnName="CTID" />
+          <ScalarProperty Name="WeekDays" ColumnName="WeekDays" />
+          <ScalarProperty Name="Times" ColumnName="Times" />
+          <ScalarProperty Name="Capcity" ColumnName="Capcity" />
+          <ScalarProperty Name="CurrentTotal" ColumnName="CurrentTotal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClassTypes">
+      <EntityTypeMapping TypeName="CoursemoModel.ClassType">
+        <MappingFragment StoreEntitySet="ClassTypes">
+          <ScalarProperty Name="CTID" ColumnName="CTID" />
+          <ScalarProperty Name="ClassType1" ColumnName="ClassType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departments">
+      <EntityTypeMapping TypeName="CoursemoModel.Department">
+        <MappingFragment StoreEntitySet="Departments">
+          <ScalarProperty Name="DID" ColumnName="DID" />
+          <ScalarProperty Name="Department1" ColumnName="Department" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Semesters">
+      <EntityTypeMapping TypeName="CoursemoModel.Semester">
+        <MappingFragment StoreEntitySet="Semesters">
+          <ScalarProperty Name="SMID" ColumnName="SMID" />
+          <ScalarProperty Name="Semester1" ColumnName="Semester" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentClasses">
+      <EntityTypeMapping TypeName="CoursemoModel.StudentClass">
+        <MappingFragment StoreEntitySet="StudentClasses">
+          <ScalarProperty Name="SCID" ColumnName="SCID" />
+          <ScalarProperty Name="STID" ColumnName="STID" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="YEARS" ColumnName="YEARS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="CoursemoModel.Student">
+        <MappingFragment StoreEntitySet="Students">
+          <ScalarProperty Name="STID" ColumnName="STID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="NetID" ColumnName="NetID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentWaitLists">
+      <EntityTypeMapping TypeName="CoursemoModel.StudentWaitList">
+        <MappingFragment StoreEntitySet="StudentWaitList">
+          <ScalarProperty Name="SCID" ColumnName="SCID" />
+          <ScalarProperty Name="STID" ColumnName="STID" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="YEARS" ColumnName="YEARS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
